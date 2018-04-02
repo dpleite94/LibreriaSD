@@ -98,16 +98,88 @@
 		</div>
 		<br />
 		<div class="row">
-			<div class="col-sm-9">
-				<h1 class="display-4">Resultado libros</h1>
+			<div class="col-sm-4">
+				<h3>Por editorial</h3>
+				<form method="get" action="/LibreriaSD/buscar/poreditorial">
+					Nombre<br />
+					<select class="form-control" name="idEditorial" required>
+						{{#editoriales}}
+							<option value="{{idEditorial}}">{{nombre}} </option>
+						{{/editoriales}}
+						{{^editoriales}}
+							<option disabled>No existe ninguna editorial</option>
+						{{/editoriales}}
+					</select> <br />
+					<input type="submit" value="Buscar" class="btn btn-info"/>
+				</form>
 			</div>
-			<div class="col">
+			<div class="col-sm-4">
+				<h3>Por autor</h3>
+				<form method="get" action="/LibreriaSD/buscar/porautor">
+					Nombre<br />
+					<select class="form-control" name="autor" required>
+						{{#autores}}
+							<option value="{{autor}}">{{autor}} </option>
+						{{/autores}}
+						{{^autores}}
+							<option disabled>No existe ningún autor</option>
+						{{/autores}}
+					</select> <br />
+					<input type="submit" value="Buscar" class="btn btn-info"/>
+				</form>
+			</div>
+			<div class="col-sm-4">
+				<h3>Por categoría</h3>
+				<form method="get" action="/LibreriaSD/buscar/porcategoria">
+					Categoría<br />
+					<select class="form-control" name="categoria" required>
+						{{#categorias}}
+							<option value="{{categoria}}">{{categoria}} </option>
+						{{/categorias}}
+						{{^categorias}}
+							<option disabled>No existe ninguna categoría</option>
+						{{/categorias}}
+					</select> <br />
+					<input type="submit" value="Buscar" class="btn btn-info"/>
+				</form>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-sm-8">
 				<h1 class="display-4">Resultado editorial</h1>
+			</div>
+		</div>
+				<div class="row">
+					{{#editorialess}}
+						<div class="col-sm-4">
+							<h6>
+								<p>
+									Nombre: <small>{{nombre}}</small>
+								</p>
+								<p>
+									Email: <small>{{email}}</small>
+								</p>
+								<a href="/LibreriaSD/detallesEditorial?idEditorial={{idEditorial}}" class="btn btn-success" role="button">Ver detalles</a>
+							</h6>
+							<br />
+						</div>
+					{{/editorialess}}
+					{{^editorialess}}
+						<div class="col-sm-4">
+							<h5>No hay resultados</h5>
+						</div>
+					{{/editorialess}}
+				</div>
+				
+		<div class="row">
+			<div class="col-sm-8">
+				<h1 class="display-4">Resultado libros</h1>
 			</div>
 		</div>
 			<div class="row">
 				{{#libros}}
-					<div class="col-sm-9">
+					<div class="col-sm-3">
 						<h6>
 							<p>
 								Autor: <small>{{autor}}</small>
@@ -124,29 +196,10 @@
 					</div>
 				{{/libros}}
 				{{^libros}}
-					<div class="col-sm-9">
+					<div class="col-sm-3">
 						<h5>No hay resultados</h5>
 					</div>
 				{{/libros}}
-				{{#editorialess}}
-					<div class="col">
-						<h6>
-							<p>
-								Nombre: <small>{{nombre}}</small>
-							</p>
-							<p>
-								Email: <small>{{email}}</small>
-							</p>
-							<a href="/LibreriaSD/detallesEditorial?idEditorial={{idEditorial}}" class="btn btn-success" role="button">Ver detalles</a>
-						</h6>
-						<br />
-					</div>
-				{{/editorialess}}
-				{{^editorialess}}
-					<div class="col">
-						<h5>No hay resultados</h5>
-					</div>
-				{{/editorialess}}
 			</div>
 	</div>
 	<script>

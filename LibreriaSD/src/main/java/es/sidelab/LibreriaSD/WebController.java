@@ -1,6 +1,9 @@
 package es.sidelab.LibreriaSD;
 
-	import javax.annotation.PostConstruct;
+	import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Controller;
@@ -84,6 +87,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 		public String buscarEditorial(@RequestParam long idEditorial, Model model) {
 
 			model.addAttribute("editorialess", repositorioEditorial.findByIdEditorial(idEditorial));
+			
+			model.addAttribute("editoriales", repositorioEditorial.findAll());
+
+			return "inicio";
+		}
+		
+		@RequestMapping("/LibreriaSD/buscar/poreditorial")
+		public String buscarPorEditorial(@RequestParam long idEditorial, Model model) {
+
+			model.addAttribute("libros", repositorioLibro.findByEditorialIdEditorial(idEditorial));
+			
+			model.addAttribute("editoriales", repositorioEditorial.findAll());
+
+			return "inicio";
+		}
+		
+		@RequestMapping("/LibreriaSD/buscar/porautor")
+		public String buscarPorAutor(@RequestParam String autor, Model model) {
+
+			model.addAttribute("libros", repositorioLibro.findByAutor(autor));
+			
+			List<String> autores = new ArrayList<String>();
+			for(Libro libro: repositorioLibro.findAll()) {
+				autores.add(libro.getAutor());
+			}
+			
+			model.addAttribute("autores", autores);
+			
+			model.addAttribute("editoriales", repositorioEditorial.findAll());
+
+			return "inicio";
+		}
+		
+		@RequestMapping("/LibreriaSD/buscar/porcategoria")
+		public String buscarPorCategoria(@RequestParam String categoria, Model model) {
+
+			model.addAttribute("libros", repositorioLibro.findByCategoria(categoria));
+			
+			List<String> categorias = new ArrayList<String>();
+			for(Libro libro: repositorioLibro.findAll()) {
+				categorias.add(libro.getAutor());
+			}
+			
+			model.addAttribute("autores", categorias);
 			
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
 
