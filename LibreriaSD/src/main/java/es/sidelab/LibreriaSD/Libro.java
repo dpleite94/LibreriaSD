@@ -16,7 +16,7 @@ public class Libro {
 		private String autor;
 		private String titulo;
 		@ManyToOne
-		@JoinColumn(name="nombre")
+		@JoinColumn(name="editorial")
 		private Editorial editorial;
 		private String añopublicacion;
 		private Integer numpag;

@@ -83,6 +83,14 @@ public class Editorial {
 		this.codfiscal = codfiscal;
 	}
 	
+	public List<Libro> getLibros() {
+		return this.libros;
+	}
+	
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
+	
 	@Override
 	public String toString() {
 		return "Editorial [nombre=" + nombre + ", telefono=" + telefono + ", email=" + email + ", codpostal=" + 
