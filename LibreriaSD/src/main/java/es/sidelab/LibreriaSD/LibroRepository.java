@@ -12,7 +12,7 @@ public interface LibroRepository extends JpaRepository<Libro, Long>{
 	
 	List<Libro> findByEditorialIdEditorial(long idEditorial);
 	
-	List<Libro> findByAutor(String autor);
+
 	
 	List<Libro> findByCategoria(String categoria);
 	

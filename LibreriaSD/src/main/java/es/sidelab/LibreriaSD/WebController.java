@@ -1,8 +1,11 @@
 package es.sidelab.LibreriaSD;
 
-	import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Arrays;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,41 +21,53 @@ import org.springframework.beans.factory.annotation.Autowired;
 		private LibroRepository repositorioLibro;
 		@Autowired
 		private EditorialRepository repositorioEditorial;
-		
+                @Autowired
+		private AutorRepository repositorioAutor;
+                
 		@PostConstruct
 		public void init() {
+                       
+                        Autor aut1 = new Autor("Valle Inclan");
+                        Autor aut2 = new Autor("Ken Follet");
+                        Autor aut3 = new Autor("Juan Capdevila");
+                        Autor aut4 = new Autor("VV.AA.");
+                        Autor aut5 = new Autor("Pío Baroja");
+                        Autor aut6 = new Autor("Martin Handford");
+                        
+                        repositorioAutor.save(aut1);
+			repositorioAutor.save(aut2);
+                        repositorioAutor.save(aut3);
+			repositorioAutor.save(aut4);
+                        repositorioAutor.save(aut5);
+			repositorioAutor.save(aut6);
+                    
 			Editorial edi1= new Editorial("Anaya", 913456767, "anaya.editorial.sd@gmail.com", 280123, "A7843243");
 			Editorial edi2= new Editorial("Santillana", 913498007, "santillana.editorial.sd@gmail.com", 280070, "A7841661");
 			// Hay que guardar dos veces la editorial en el repositorio por temas de consistencia y coherencia con
 			// los elementos con los que se relaciona formalmente en la bd
 			repositorioEditorial.save(edi1);
 			repositorioEditorial.save(edi2);
+                        			
 			
-			Libro lib1= new Libro("Valle Inclan", "Luces de Bohemia",edi1,"10-3-1905", 190, "7564839275993", 20.99, "Comedia" );
+			Libro lib1= new Libro( "Luces de Bohemia", new HashSet<Autor>() {{add(aut5);add(aut2); }} , edi1,"10-3-1905", 190, "7564839275993", 20.99, "Comedia" );
 			lib1.setEditorial(edi1);
-			repositorioLibro.save(lib1);
-			
-			Libro lib2= new Libro("Ken Follet", "Los pilares de la tierra",edi1,"26-10-1989", 1300, "7564006535311", 24.99, "Novela histórica" );
+                       
+  			
+			Libro lib2= new Libro("Los pilares de la tierra", new HashSet<Autor>() {{add(aut3);add(aut4); }} ,edi1,"26-10-1989", 1300, "7564006535311", 24.99, "Novela histórica" );
 			lib2.setEditorial(edi1);
-			repositorioLibro.save(lib2);
-			
-			Libro lib3 = new Libro("Juan Capdevila", "TEO va a la URJC",edi2,"13-5-2005", 32, "9788471763112", 4.99, "Infantil" );
+ 			
+			Libro lib3 = new Libro("TEO va a la URJC", new HashSet<Autor>() {{add(aut6);add(aut1); }} ,edi2,"13-5-2005", 32, "9788471763112", 4.99, "Infantil" );
 			lib3.setEditorial(edi2);
-			repositorioLibro.save(lib3);
 			
-			Libro lib4 = new Libro("VV.AA.", "Pinta y colorea",edi2,"11-2-2000", 12, "9788416117581", 2.99, "Infantil" );
+			Libro lib4 = new Libro("Pinta y colorea", new HashSet<Autor>() {{add(aut6); }} ,edi2,"11-2-2000", 12, "9788416117581", 2.99, "Infantil" );
 			lib4.setEditorial(edi2);
-			repositorioLibro.save(lib4);
 			
-			Libro lib5 = new Libro("Pío Baroja", "El árbol de la ciencia",edi1,"9-11-1911", 304, "9788437605227", 19.99, "Novela autobiográfica" );
-			lib5.setEditorial(edi1);
-			repositorioLibro.save(lib5);
+			Libro lib5 = new Libro("El árbol de la ciencia",  new HashSet<Autor>() {{add(aut5); }} ,edi1,"9-11-1911", 304, "9788437605227", 19.99, "Novela autobiográfica" );
+			lib5.setEditorial(edi1);                   
 			
-			Libro lib6 = new Libro("Martin Handford", "¿Donde está Wally?",edi1,"1-12-2012", 30, "9788493961473", 8.99, "Infantil" );
+			Libro lib6 = new Libro("¿Donde está Wally?",  new HashSet<Autor>() {{add(aut4); }} ,edi1,"1-12-2012", 30, "9788493961473", 8.99, "Infantil" );
 			lib6.setEditorial(edi1);
-			repositorioLibro.save(lib6);
-			
-			
+   		
 			edi1.getLibros().add(lib1);
 			edi1.getLibros().add(lib2);
 			edi2.getLibros().add(lib3);
@@ -61,6 +76,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 			edi1.getLibros().add(lib6);
 			repositorioEditorial.save(edi1);
 			repositorioEditorial.save(edi2);
+                        
+         
+                        
+                        repositorioLibro.save(lib1);
+                        repositorioLibro.save(lib2);
+                        repositorioLibro.save(lib3);
+                        repositorioLibro.save(lib4);
+                        repositorioLibro.save(lib5);
+                        repositorioLibro.save(lib6);
+                        
+                     /* repositorioLibro.save(new HashSet<Libro>() {{
+                                 add(new Libro("", new HashSet<Autor>() {{
+                                 add(aut5);
+                                  add(aut2);
+                             }}));
+
+                             add(new Libro("", new HashSet<Autor>() {{
+                                add(aut3);
+                                add(aut4);
+                                 }}));
+                             
+                                 add(new Libro("", new HashSet<Autor>() {{
+                                add(aut3);
+                                add(aut4);
+                                 }}));
+                            }});   */                    
+                             
 
 			
 		}		
@@ -69,6 +111,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 		public String greetingInicio(Model model) {
 
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
+                        
+                        model.addAttribute("autores", repositorioAutor.findAll());                       
 
 			return "inicio";
 		}
@@ -79,6 +123,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 			model.addAttribute("libros", repositorioLibro.findByTitulo(titulo));
 			
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
+                        
+                        model.addAttribute("autores", repositorioAutor.findAll());
 
 			return "inicio";
 		}
@@ -89,35 +135,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 			model.addAttribute("editorialess", repositorioEditorial.findByIdEditorial(idEditorial));
 			
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
+                        
+                        model.addAttribute("autores", repositorioAutor.findAll());
 
 			return "inicio";
 		}
 		
 		@RequestMapping("/LibreriaSD/buscar/poreditorial")
 		public String buscarPorEditorial(@RequestParam long idEditorial, Model model) {
-
-			model.addAttribute("libros", repositorioLibro.findByEditorialIdEditorial(idEditorial));
+                        
+                       
+                        List<Libro> libroses = repositorioLibro.findByEditorialIdEditorial(idEditorial);
+                       
+                        repositorioLibro.save(libroses);
+                        
+			model.addAttribute("libros", repositorioLibro.findByEditorialIdEditorial(idEditorial));                       
 			
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
+                        
+                        model.addAttribute("autores", repositorioAutor.findAll());
+                        
+                        
 
 			return "inicio";
 		}
 		
 		@RequestMapping("/LibreriaSD/buscar/porautor")
-		public String buscarPorAutor(@RequestParam String autor, Model model) {
+		public String buscarPorAutor(@RequestParam long idAutor, Model model) {
+                      
 
-			model.addAttribute("libros", repositorioLibro.findByAutor(autor));
-			
-			List<String> autores = new ArrayList<String>();
-			for(Libro libro: repositorioLibro.findAll()) {
-				autores.add(libro.getAutor());
-			}
-			
-			model.addAttribute("autores", autores);
-			
-			model.addAttribute("editoriales", repositorioEditorial.findAll());
+                    
+                    Autor autorBusqueda = repositorioAutor.findByIdAutor(idAutor);
+                    
+                    Set librosdelautor = autorBusqueda.getLibros();
+                    
+                    List libros = new ArrayList();
+                    
+                    libros.addAll(librosdelautor);
+                    
+            
+                    model.addAttribute("libros", libros);
+                            
+                    model.addAttribute("editoriales", repositorioEditorial.findAll());
 
-			return "inicio";
+                    model.addAttribute("autores", repositorioAutor.findAll());
+
+                    return "inicio";
 		}
 		
 		@RequestMapping("/LibreriaSD/buscar/porcategoria")
@@ -127,7 +190,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			
 			List<String> categorias = new ArrayList<String>();
 			for(Libro libro: repositorioLibro.findAll()) {
-				categorias.add(libro.getAutor());
+				categorias.add(libro.getCategoria());
 			}
 			
 			model.addAttribute("autores", categorias);
@@ -141,6 +204,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 		public String greetingAñadirLibro(Model model) {
 
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
+                        
+                        model.addAttribute("autores", repositorioAutor.findAll());
 
 			return "añadirLibro";
 		}

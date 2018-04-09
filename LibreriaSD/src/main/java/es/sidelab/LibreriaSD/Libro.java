@@ -1,19 +1,28 @@
 package es.sidelab.LibreriaSD;
 
+
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import java.io.Serializable;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
-public class Libro {
+public class Libro implements Serializable {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private long idLibro;	
-		private String autor;
+		@ManyToMany
+                @Cascade({CascadeType.SAVE_UPDATE})
+                private Set<Autor> autores;
 		private String titulo;
 		@ManyToOne
 		@JoinColumn(name="editorial")
@@ -28,10 +37,10 @@ public class Libro {
 			
 		}
 
-		public Libro(String autor, String titulo, Editorial editorial, String añopublicacion, Integer numpag, 
+		public Libro( String titulo, Editorial editorial, String añopublicacion, Integer numpag, 
 				String ISBN, Double precio, String categoria) {
-			this.autor = autor;
-			this.titulo = titulo;
+                        this.titulo = titulo;
+
 			this.editorial = editorial;
 			this.añopublicacion = añopublicacion;
 			this.numpag = numpag;
@@ -39,6 +48,22 @@ public class Libro {
 			this.precio = precio;
 			this.categoria = categoria;
 		}
+                public Libro( String titulo, HashSet<Autor> autores, Editorial editorial, String añopublicacion, Integer numpag, 
+				String ISBN, Double precio, String categoria) {
+                        this.titulo = titulo;
+                        this.autores = autores;
+			this.editorial = editorial;
+			this.añopublicacion = añopublicacion;
+			this.numpag = numpag;
+			this.ISBN = ISBN;
+			this.precio = precio;
+			this.categoria = categoria;
+		}
+		public Libro( String titulo, Set<Autor> autores) {
+                        this.titulo = titulo;
+                        this.autores = autores;
+
+		}                
 
 		public long getIdLibro() {
 			return idLibro;
@@ -48,12 +73,12 @@ public class Libro {
 			this.idLibro = idLibro;
 		}
 		
-		public String getAutor() {
-			return autor;
+		public Set<Autor> getAutores() {
+			return autores;
 		}
 
-		public void setAutor(String autor) {
-			this.autor = autor;
+		public void setAutores(Set<Autor> autores) {
+			this.autores = autores;
 		}
 
 		public String getTitulo() {
@@ -114,7 +139,7 @@ public class Libro {
 
 		@Override
 		public String toString() {
-			return "Libro [autor=" + autor + ", titulo=" + titulo + ", editorial=" + editorial + ", añopublicacion=" + 
+			return "Libro [titulo=" + titulo + ", editorial=" + editorial + ", añopublicacion=" + 
 		añopublicacion + ", numpag=" + numpag + ", ISBN=" + ISBN + ", precio=" + precio + ", categoria=" + categoria + "]";
 		}
 
