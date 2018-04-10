@@ -18,12 +18,14 @@ public class LibroController {
 	@Autowired
 	private EditorialRepository repositorioEditorial;
 	@Autowired
-	private AutorRepository repositorioAutor;        
+	private AutorRepository repositorioAutor;  
+	@Autowired
+	private CategoriaRepository repositorioCategoria;
 
 	@PostMapping("/LibreriaSD/añadir/libro/solicitud")
 	public String añadirLibro(@RequestParam String titulo, Editorial editorial, long[] autores,
 			@RequestParam String añopublicacion, @RequestParam Integer numpag, 
-			@RequestParam String ISBN, @RequestParam Double precio, @RequestParam String categoria,
+			@RequestParam String ISBN, @RequestParam Double precio, Categoria categoria,
 			Model model) {
                 Libro libro = new Libro(titulo , editorial, añopublicacion, numpag, ISBN, precio, categoria);
             
@@ -43,6 +45,8 @@ public class LibroController {
 		model.addAttribute("editoriales", repositorioEditorial.findAll());
                 
                 model.addAttribute("autores", repositorioAutor.findAll());
+        
+        model.addAttribute("categorias", repositorioCategoria.findAll());
 
 		return "añadirLibro";
 	}
@@ -52,6 +56,8 @@ public class LibroController {
 
             
                 model.addAttribute("autores2", repositorioAutor.findAll());
+                
+        model.addAttribute("categorias", repositorioCategoria.findAll());
             
 		model.addAttribute("libro", repositorioLibro.findByIdLibro(id));
                 
@@ -67,10 +73,11 @@ public class LibroController {
 	public String modificarLibro(@RequestParam long idLibro, long[] autores2,
 			@RequestParam String titulo, @RequestParam long idEditorial, @RequestParam String añopublicacion,
 			@RequestParam Integer numpag, @RequestParam String ISBN, @RequestParam Double precio,
-			@RequestParam String categoria, Model model) {
+			@RequestParam long idCategoria, Model model) {
 
 		Libro libro = repositorioLibro.findByIdLibro(idLibro);
 		Editorial editorial = repositorioEditorial.findByIdEditorial(idEditorial);
+		Categoria categoria = repositorioCategoria.findByIdCategoria(idCategoria);
 		
 		
                     Set<Autor> autoresset = new HashSet<>();

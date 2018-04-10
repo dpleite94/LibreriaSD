@@ -31,14 +31,16 @@ public class Libro implements Serializable {
 		private Integer numpag;
 		private String ISBN;
 		private Double precio;
-		private String categoria;
+		@ManyToOne
+        @Cascade({CascadeType.SAVE_UPDATE})
+		private Categoria categoria;
 		
 		public Libro() {
 			
 		}
 
 		public Libro( String titulo, Editorial editorial, String añopublicacion, Integer numpag, 
-				String ISBN, Double precio, String categoria) {
+				String ISBN, Double precio, Categoria categoria) {
                         this.titulo = titulo;
 
 			this.editorial = editorial;
@@ -49,7 +51,7 @@ public class Libro implements Serializable {
 			this.categoria = categoria;
 		}
                 public Libro( String titulo, HashSet<Autor> autores, Editorial editorial, String añopublicacion, Integer numpag, 
-				String ISBN, Double precio, String categoria) {
+				String ISBN, Double precio, Categoria categoria) {
                         this.titulo = titulo;
                         this.autores = autores;
 			this.editorial = editorial;
@@ -129,11 +131,11 @@ public class Libro implements Serializable {
 			this.precio = precio;
 		}
 		
-		public String getCategoria() {
+		public Categoria getCategoria() {
 			return categoria;
 		}
 		
-		public void setCategoria(String categoria) {
+		public void setCategoria(Categoria categoria) {
 			this.categoria = categoria;
 		}
 

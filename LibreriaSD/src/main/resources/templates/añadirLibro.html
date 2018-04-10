@@ -1,6 +1,6 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>LibreriaSD - Añadir nuevo libro</title>
 	<meta charset="utf-8" />
@@ -107,8 +107,15 @@
 							<input type="number" name="precio" class="form-control" maxlength="4" min="1" required />
 						</p>
 						<p>
-							<b>Categoría</b><br /> 
-							<input type="text" name="categoria" class="form-control" required />
+							<b>Categoría</b> </br> 
+							<select class="form-control" name="categoria" required>
+								{{#categorias}}
+									<option value="{{idCategoria}}">{{nombre}}</option>
+								{{/categorias}}
+								{{^categorias}}
+									<option disabled>No existe ninguna categoría</option>
+								{{/categorias}}
+							</select> <br />
 						</p>
 						<input type="submit" value="Añadir" class="btn btn-success" />
 					</div>

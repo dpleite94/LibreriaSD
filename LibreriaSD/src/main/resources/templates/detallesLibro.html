@@ -1,6 +1,6 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>LibreriaSD - {{#libro}}{{titulo}} {{/libro}}</title>
 	<meta charset="utf-8"/>
@@ -63,7 +63,7 @@
 						<p><b>Número de páginas: </b>{{numpag}}</p>
 						<p><b>ISBN: </b>{{ISBN}}</p>
 						<p><b>Precio: </b>{{precio}}</p>
-						<p><b>Categoría: </b>{{categoria}}</p>
+						<p><b>Categoría: </b>{{categoria.nombre}}</p>
 					<p>
 						<a href="/LibreriaSD/modificarLibro?id={{idLibro}}" class="btn btn-warning" role="button">Modificar</a>
 					</p>

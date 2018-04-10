@@ -1,6 +1,6 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>LibreriaSD - Inicio</title>
 	<meta charset="utf-8" />
@@ -134,9 +134,9 @@
 				<h3>Por categoría</h3>
 				<form method="get" action="/LibreriaSD/buscar/porcategoria">
 					Categoría<br />
-					<select class="form-control" name="categoria" required>
+					<select class="form-control" name="idCategoria" required>
 						{{#categorias}}
-							<option value="{{categoria}}">{{categoria}} </option>
+							<option value="{{idCategoria}}">{{nombre}} </option>
 						{{/categorias}}
 						{{^categorias}}
 							<option disabled>No existe ninguna categoría</option>

@@ -12,8 +12,6 @@ public interface LibroRepository extends JpaRepository<Libro, Long>{
 	
 	List<Libro> findByEditorialIdEditorial(long idEditorial);
 	
-
-	
-	List<Libro> findByCategoria(String categoria);
+	List<Libro> findByCategoriaIdCategoria(long idCategoria);
 	
 }
