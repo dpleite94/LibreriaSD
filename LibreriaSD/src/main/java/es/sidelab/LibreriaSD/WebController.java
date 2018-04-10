@@ -61,23 +61,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 			repositorioEditorial.save(edi2);
                         			
 			
-			Libro lib1= new Libro( "Luces de Bohemia", new HashSet<Autor>() {{add(aut5);add(aut2); }} , edi1,"10-3-1905", 190, "7564839275993", 20.99, cat1 );
+			Libro lib1= new Libro( "Luces de Bohemia", new HashSet<Autor>() {{add(aut5);add(aut2); }} , edi1,"10-3-1905", 190, "7564839275993", 20, cat1 );
 			lib1.setEditorial(edi1);
                        
   			
-			Libro lib2= new Libro("Los pilares de la tierra", new HashSet<Autor>() {{add(aut3);add(aut4); }} ,edi1,"26-10-1989", 1300, "7564006535311", 24.99, cat2 );
+			Libro lib2= new Libro("Los pilares de la tierra", new HashSet<Autor>() {{add(aut3);add(aut4); }} ,edi1,"26-10-1989", 1300, "7564006535311", 24, cat2 );
 			lib2.setEditorial(edi1);
  			
-			Libro lib3 = new Libro("TEO va a la URJC", new HashSet<Autor>() {{add(aut6);add(aut1); }} ,edi2,"13-5-2005", 32, "9788471763112", 4.99, cat3 );
+			Libro lib3 = new Libro("TEO va a la URJC", new HashSet<Autor>() {{add(aut6);add(aut1); }} ,edi2,"13-5-2005", 32, "9788471763112", 4, cat3 );
 			lib3.setEditorial(edi2);
 			
-			Libro lib4 = new Libro("Pinta y colorea", new HashSet<Autor>() {{add(aut6); }} ,edi2,"11-2-2000", 12, "9788416117581", 2.99, cat3 );
+			Libro lib4 = new Libro("Pinta y colorea", new HashSet<Autor>() {{add(aut6); }} ,edi2,"11-2-2000", 12, "9788416117581", 2, cat3 );
 			lib4.setEditorial(edi2);
 			
-			Libro lib5 = new Libro("El árbol de la ciencia",  new HashSet<Autor>() {{add(aut5); }} ,edi1,"9-11-1911", 304, "9788437605227", 19.99, cat4 );
+			Libro lib5 = new Libro("El árbol de la ciencia",  new HashSet<Autor>() {{add(aut5); }} ,edi1,"9-11-1911", 304, "9788437605227", 19, cat4 );
 			lib5.setEditorial(edi1);                   
 			
-			Libro lib6 = new Libro("¿Donde está Wally?",  new HashSet<Autor>() {{add(aut4); }} ,edi1,"1-12-2012", 30, "9788493961473", 8.99, cat3 );
+			Libro lib6 = new Libro("¿Donde está Wally?",  new HashSet<Autor>() {{add(aut4); }} ,edi1,"1-12-2012", 30, "9788493961473", 8, cat3 );
 			lib6.setEditorial(edi1);
    		
 			edi1.getLibros().add(lib1);

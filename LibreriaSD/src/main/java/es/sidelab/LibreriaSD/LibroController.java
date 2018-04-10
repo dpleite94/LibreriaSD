@@ -25,7 +25,7 @@ public class LibroController {
 	@PostMapping("/LibreriaSD/añadir/libro/solicitud")
 	public String añadirLibro(@RequestParam String titulo, Editorial editorial, long[] autores,
 			@RequestParam String añopublicacion, @RequestParam Integer numpag, 
-			@RequestParam String ISBN, @RequestParam Double precio, Categoria categoria,
+			@RequestParam String ISBN, @RequestParam Integer precio, Categoria categoria,
 			Model model) {
                 Libro libro = new Libro(titulo , editorial, añopublicacion, numpag, ISBN, precio, categoria);
             
@@ -72,7 +72,7 @@ public class LibroController {
 	@PostMapping("/LibreriaSD/modificarLibro/solicitud")
 	public String modificarLibro(@RequestParam long idLibro, long[] autores2,
 			@RequestParam String titulo, @RequestParam long idEditorial, @RequestParam String añopublicacion,
-			@RequestParam Integer numpag, @RequestParam String ISBN, @RequestParam Double precio,
+			@RequestParam Integer numpag, @RequestParam String ISBN, @RequestParam Integer precio,
 			@RequestParam long idCategoria, Model model) {
 
 		Libro libro = repositorioLibro.findByIdLibro(idLibro);
