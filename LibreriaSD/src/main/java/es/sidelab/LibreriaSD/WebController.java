@@ -206,11 +206,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 		@RequestMapping("/LibreriaSD/buscar/porcategoria")
 		public String buscarPorCategoria(@RequestParam long idCategoria, Model model) {
 
-            List<Libro> libros = repositorioLibro.findByCategoriaIdCategoria(idCategoria);
+                        List<Libro> libros = repositorioLibro.findByCategoriaIdCategoria(idCategoria);
             
-            repositorioLibro.save(libros);
+                        repositorioLibro.save(libros);
             
-            model.addAttribute("libros", repositorioLibro.findByCategoriaIdCategoria(idCategoria));  
+                        model.addAttribute("libros", repositorioLibro.findByCategoriaIdCategoria(idCategoria));  
 			
 			model.addAttribute("autores", repositorioAutor.findAll());
 			
@@ -237,6 +237,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 		public String greetingAñadirEditorial(Model model) {
 
 			return "añadirEditorial";
+		}
+                
+                @RequestMapping("/LibreriaSD/añadir/autor")
+		public String greetingAñadirAutor(Model model) {
+
+			return "añadirAutor";
+		}
+                
+                @RequestMapping("/LibreriaSD/añadir/categoria")
+		public String greetingAñadirCategoria(Model model) {
+
+			return "añadirCategoria";
 		}
 
 		@RequestMapping("/LibreriaSD/detallesLibro")
