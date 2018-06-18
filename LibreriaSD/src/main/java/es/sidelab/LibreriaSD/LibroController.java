@@ -87,7 +87,7 @@ public class LibroController {
                         Collections.addAll(autoresset, autorBusqueda);
                     }
                   
-                libro.setAutores(autoresset);
+        libro.setAutores(autoresset);
 		libro.setTitulo(titulo);
 		libro.setEditorial(editorial);
 		libro.setAñopublicacion(añopublicacion);

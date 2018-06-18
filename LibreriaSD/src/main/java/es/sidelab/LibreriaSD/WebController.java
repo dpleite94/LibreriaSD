@@ -152,7 +152,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
                         
-                        model.addAttribute("autores", repositorioAutor.findAll());
+            model.addAttribute("autores", repositorioAutor.findAll());
                         
             model.addAttribute("categorias", repositorioCategoria.findAll());
 
@@ -167,11 +167,11 @@ import org.springframework.beans.factory.annotation.Autowired;
                        
                         repositorioLibro.save(libroses);
                         
-			model.addAttribute("libros", repositorioLibro.findByEditorialIdEditorial(idEditorial));                       
+			model.addAttribute("libros", libroses);                       
 			
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
                         
-                        model.addAttribute("autores", repositorioAutor.findAll());
+            model.addAttribute("autores", repositorioAutor.findAll());
                         
             model.addAttribute("categorias", repositorioCategoria.findAll());           
 

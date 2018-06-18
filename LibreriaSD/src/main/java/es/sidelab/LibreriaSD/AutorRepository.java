@@ -7,7 +7,7 @@ package es.sidelab.LibreriaSD;
 
 /**
  *
- * @author jaime
+ * @author alvaro
  */
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;

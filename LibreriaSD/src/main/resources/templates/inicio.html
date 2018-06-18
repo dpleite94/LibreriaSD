@@ -1,80 +1,57 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
 <head>
-     <title>LibreriaSD - Inicio</title>
+	<title>LibreriaSD - Inicio</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/LibreriaSD.css">
-	<link rel="stylesheet" type="text/css" href="../../vendor/bootstrap-4.0.0/dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../../vendor/bootstrap-4.0.0/dist/css/bootstrap-grid.css">
+	<link rel="stylesheet" type="text/css" href="/css/LibreriaSD.css">
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	<script src="../../vendor/jquery-3.3.1/jquery.min.js"></script>
-	<script src="../../vendor/bootstrap-4.0.0/dist/js/bootstrap.js"></script></style>
 </head>
+
 <body>
+	
 	<div class="container">
-		<div class="jumbotron">
-			<h1 class="display-2">
+		<div class="row">
+		
+			<h1 class="contenedor-texto-titulo " style=" padding-left: 150px ; color: yellow">
 				<b>LibreriaSD</b>
 			</h1>
-			<br />
-			<h3 class="display-4">
-				<b>Encuentra el libro que deseas</b>
-			</h3>
 		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<ul class="nav nav-tabs nav-justified">
-					<li class="nav-item">
-						<a class="nav-link active" href="/LibreriaSD">Inicio</a>
-					</li>
-					<li class="nav-item">
-						<div class="dropdown">
-							<span class="nav-link unselectable" data-toggle="dropdown">Añadir</span>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="/LibreriaSD/añadir/libro">Libro</a>
-								<a class="dropdown-item" href="/LibreriaSD/añadir/editorial">Editorial</a>
-                                                                <a class="dropdown-item" href="/LibreriaSD/añadir/autor">Autor</a>
-                                                                <a class="dropdown-item" href="/LibreriaSD/añadir/categoria">Categoria</a>
-							</div>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" data-toggle="tooltip" title="Accede buscándolo más abajo" disabled>Detalles de Libro</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" data-toggle="tooltip" title="Accede buscándolo más abajo" disabled>Detalles de Editorial</a>
-					</li>
-				</ul>
-				<br />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-9">
-				<h1 class="display-4">Buscar</h1>
-			</div>
-			<div class="col">
-				<h1 class="display-4">Añadir</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h3>Libro</h3>
+	</div>
+	
+	
+       <p class="lead move-dch"></p>
+            <div id="tab" class="btn-group move-dch" data-toggle="buttons-radio">
+              <a href="#prices2"   class="btn btn-large btn-warning active" data-toggle="tab">Buscar Libro</a>                         
+              <a href="#contact2"  class="btn btn-large btn-warning"  data-toggle="tab">Buscar Editorial</a>
+			  <a href="#features2" class="btn btn-large btn-warning"  data-toggle="tab">Añadir</a>  
+			  <a href="#contact3"  class="btn btn-large btn-warning"  data-toggle="tab">Detalles</a>
+			 
+            </div>
+             
+            <div class="tab-content move-dch">
+              <div class="tab-pane active" id="prices2">
+                <br>
+                <p class="lead "> <h3 class= "color-tit" >Busqueda Avanzada</h3></p>
+         
+		 <div class="row">
+		
+			<div class="col-4">
+				<h4 class= "color-tit">Libro</h4>
 				<form method="get" action="/LibreriaSD/buscar/libro">
-					Título<br />
+					<h6 class= "color-tit" >Titulo</h6><br />
 					<input type="text" name="titulo" class="form-control" required /><br /> 
-					<input type="submit" value="Buscar" class="btn btn-info"/>
+					<input type="submit" value="Buscar" class="btn btn-warning"/>
 				</form>
 			</div>
-			<div class="col">
-				<h3>Editorial</h3>
-				<form method="get" action="/LibreriaSD/buscar/editorial">
-					Nombre<br />
+			
+			<div class="col-4">
+				<h4 class= "color-tit" >Editorial</h4>
+				<form method="get" action="/LibreriaSD/buscar/poreditorial">
+					<h6 class= "color-tit" >Nombre</h6><br />
 					<select class="form-control" name="idEditorial" required>
 						{{#editoriales}}
 							<option value="{{idEditorial}}">{{nombre}} </option>
@@ -83,107 +60,110 @@
 							<option disabled>No existe ninguna editorial</option>
 						{{/editoriales}}
 					</select> <br />
-					<input type="submit" value="Buscar" class="btn btn-info"/>
+					<input type="submit" value="Buscar" class="btn btn-warning"/>
 				</form>
+			</div>			
+			
+		  </div>
+		
+		<div class="row">
+			<div class="col-sm-4">
+				<h1 class="display-4 color-tit">Resultado libros</h1>
 			</div>
-			<div class="col">
-				<p>
+		</div>
+			<div class="row">
+				{{#libros}}
+					<div class="col-sm-3">
+						<h6 class = "color-tit">
+							<p>
+								Autores:
+								{{#autores}}
+									<br/><small>{{nombre}}</small>
+								{{/autores}}
+							</p>
+							<p>
+								Título: <small>{{titulo}}</small>
+							</p>
+							<p>
+								Editorial: <small>{{editorial.nombre}}</small>
+							</p>
+							<a href="/LibreriaSD/detallesLibro?idLibro={{idLibro}}" class="btn btn-warning" role="button">Ver detalles</a>
+						</h6>
+						<br />
+					</div>
+				{{/libros}}
+				{{^libros}}
+					<div class="col-sm-3">
+						<h5 class = "color-tit" >No hay resultados</h5>
+					</div>
+				{{/libros}}
+			</div>
+		
+        </div>
+		
+		
+        <div class="tab-pane" id="features2">
+              
+                <div class="row">
+                    <div class="col">
+				<br></br>				
+				<h6 class="color-tit">
 					¿No encuentras tu libro?<br /> 
 					Añádelo a nuestra base de datos!
-				</p>
+					
+				</h6>
+				<br></br>	
 				<p>
-					<a href="/LibreriaSD/añadir/libro" class="btn btn-primary" role="button">Añadir</a>
+					<a href="/LibreriaSD/añadir/libro" class="btn btn-warning" role="button">Añadir</a>
 				</p>
-			</div>
-		</div>
-		<br />
-		<div class="row">
+					</div>
+                </div>
+        </div>
+		
+		
+        <div class="tab-pane" id="contact3">
+                    <br>
+             
+                <div class="row">
+				
+				<div class="row">
 			<div class="col-sm-4">
-				<h3>Por editorial</h3>
-				<form method="get" action="/LibreriaSD/buscar/poreditorial">
-					Nombre<br />
-					<select class="form-control" name="idEditorial" required>
-						{{#editoriales}}
-							<option value="{{idEditorial}}">{{nombre}} </option>
-						{{/editoriales}}
-						{{^editoriales}}
-							<option disabled>No existe ninguna editorial</option>
-						{{/editoriales}}
-					</select> <br />
-					<input type="submit" value="Buscar" class="btn btn-info"/>
-				</form>
-			</div>
-			<div class="col-sm-4">
-				<h3>Por autor</h3>
-				<form method="get" action="/LibreriaSD/buscar/porautor">
-					Nombre<br />
-					<select class="form-control" name="idAutor" required>
-						{{#autores}}
-							<option value="{{idAutor}}">{{nombre}} </option>
-						{{/autores}}
-						{{^autores}}
-							<option disabled>No existe ningún autor</option>
-						{{/autores}}
-					</select> <br />
-					<input type="submit" value="Buscar" class="btn btn-info"/>
-				</form>
-			</div>
-			<div class="col-sm-4">
-				<h3>Por categoría</h3>
-				<form method="get" action="/LibreriaSD/buscar/porcategoria">
-					Categoría<br />
-					<select class="form-control" name="idCategoria" required>
-						{{#categorias}}
-							<option value="{{idCategoria}}">{{nombre}} </option>
-						{{/categorias}}
-						{{^categorias}}
-							<option disabled>No existe ninguna categoría</option>
-						{{/categorias}}
-					</select> <br />
-					<input type="submit" value="Buscar" class="btn btn-info"/>
-				</form>
-			</div>
-		</div>
-		<br />
-		<div class="row">
-			<div class="col-sm-8">
-				<h1 class="display-4">Resultado editorial</h1>
+				<h2 class="display-4 color-tit">Resultado editorial</h2>
 			</div>
 		</div>
 				<div class="row">
-					{{#editorialess}}
+					<h6 class = "color-tit">{{#editorialess}} </h6>
 						<div class="col-sm-4">
-							<h6>
+							<h6 class = "color-tit">
 								<p>
 									Nombre: <small>{{nombre}}</small>
 								</p>
 								<p>
 									Email: <small>{{email}}</small>
 								</p>
-								<a href="/LibreriaSD/detallesEditorial?idEditorial={{idEditorial}}" class="btn btn-success" role="button">Ver detalles</a>
+								<a href="/LibreriaSD/detallesEditorial?idEditorial={{idEditorial}}" class="btn btn-warning" role="button">Ver detalles</a>
 							</h6>
-							<br />
+							
 						</div>
-					{{/editorialess}}
-					{{^editorialess}}
-						<div class="col-sm-4">
-							<h5>No hay resultados</h5>
-						</div>
-					{{/editorialess}}
+					<h6 class = "color-tit" >{{/editorialess}} <h6>
+					<h6 class = "color-tit" >{{^editorialess}}<h6> 
+					
+					<h5 class = "color-tit">No hay resultados</h5>
+						
+					<h6 class = "color-tit" >{{/editorialess}} <h6>
 				</div>
+		<br></br>
+		
 				
 		<div class="row">
-			<div class="col-sm-8">
-				<h1 class="display-4">Resultado libros</h1>
+			<div class="col-sm-4">
+				<h1 class="display-4 color-tit">Resultado libros</h1>
 			</div>
 		</div>
-                
-    
-                
 			<div class="row">
 				{{#libros}}
 					<div class="col-sm-3">
-						<h6>
+						<h6 class = "color-tit">
 							<p>
 								Autor: <small>{{autores}}</small>
 							</p>
@@ -193,23 +173,97 @@
 							<p>
 								Editorial: <small>{{editorial.nombre}}</small>
 							</p>
-							<a href="/LibreriaSD/detallesLibro?idLibro={{idLibro}}" class="btn btn-success" role="button">Ver detalles</a>
+							<a href="/LibreriaSD/detallesLibro?idLibro={{idLibro}}" class="btn btn-warning" role="button">Ver detalles</a>
 						</h6>
 						<br />
 					</div>
 				{{/libros}}
 				{{^libros}}
 					<div class="col-sm-3">
-						<h5>No hay resultados</h5>
+						<h5 class = "color-tit" >No hay resultados</h5>
 					</div>
 				{{/libros}}
 			</div>
+                    
+					
+					
+                </div>
+        </div>
+			  
+			  
+			  
+			  
+			  
+        <div class="tab-pane" id="contact2">
+                    <br>
+                <p class="lead "> <h3 class= "color-tit" >Busqueda Avanzada</h3></p>
+                <form class="well span8">
+        <div class="row">
+                        <div class="span3">
+                            
+						<br />
+					<div class="row">
+							<div class="col-sm-4">
+								<h3 class= "color-tit">Por editorial</h3>
+								<form method="get" action="/LibreriaSD/buscar/poreditorial">
+									<h6 class= "color-tit" >Nombre</h6><br />
+									<select class="form-control" name="idEditorial" required>
+										{{#editoriales}}
+											<option value="{{idEditorial}}">{{nombre}} </option>
+										{{/editoriales}}
+										{{^editoriales}}
+											<option disabled>No existe ninguna editorial</option>
+										{{/editoriales}}
+									</select> <br />
+									<input type="submit" value="Buscar" class="btn btn-warning"/>
+								</form>
+							</div>
+						    <div class="col-sm-4">
+							<h3 class= "color-tit">Por autor</h3>
+							<form method="get" action="/LibreriaSD/buscar/porautor">
+								<h6 class= "color-tit" >Nombre</h6><br />
+								<select class="form-control" name="autor" required>
+									{{#autores}}
+										<option value="{{autores}}">{{autores}} </option>
+									{{/autores}}
+									{{^autores}}
+										<option disabled>No existe ningún autor</option>
+									{{/autores}}
+								</select> <br />
+								<input type="submit" value="Buscar" class="btn btn-warning"/>
+							</form>
+						</div>
+						<div class="col-sm-4">
+							<h3 class= "color-tit">Por categoría</h3>
+							<form method="get" action="/LibreriaSD/buscar/porcategoria">
+							<h6 class= "color-tit" >Categoría</h6><br />
+								<select class="form-control" name="categoria" required>
+									{{#categorias}}
+										<option value="{{categorias}}">{{categorias}} </option>
+									{{/categorias}}
+									{{^categorias}}
+										<option disabled>No existe ninguna categoría</option>
+									{{/categorias}}
+								</select> <br />
+								<input type="submit" value="Buscar" class="btn btn-warning"/>
+							</form>
+						</div>						
+						
+                    </div>
+						
+                    </div>
+                </form>
+        </div>
+        </div>
+        </div>
 	</div>
-	<script>
+</div>
+    
+<script>
 		$(document).ready(function(){
     	$('[data-toggle="tooltip"]').tooltip();   
 		});
-	</script>
-    
+</script>
+
 </body>
 </html>
