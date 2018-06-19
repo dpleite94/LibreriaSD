@@ -13,7 +13,7 @@ public class AutorController {
 	@Autowired
 	private AutorRepository repositorioAutor;
 
-	@PostMapping("/LibreriaSD/añadir/autor/solicitud")
+	@PostMapping("/añadir/autor/solicitud")
 	public String añadirEditorial(@RequestParam String nombre,
 			Model model) {
 

@@ -119,7 +119,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			
 		}		
 
-		@RequestMapping("/LibreriaSD")
+		@RequestMapping("/")
 		public String greetingInicio(Model model) {
 
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
@@ -131,7 +131,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "inicio";
 		}
 
-		@RequestMapping("/LibreriaSD/buscar/libro")
+		@RequestMapping("/buscar/libro")
 		public String buscarLibro(@RequestParam String titulo, Model model) {
 
 			model.addAttribute("libros", repositorioLibro.findByTitulo(titulo));
@@ -145,7 +145,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "inicio";
 		}
 
-		@RequestMapping("/LibreriaSD/buscar/editorial")
+		@RequestMapping("/buscar/editorial")
 		public String buscarEditorial(@RequestParam long idEditorial, Model model) {
 
 			model.addAttribute("editorialess", repositorioEditorial.findByIdEditorial(idEditorial));
@@ -159,7 +159,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "inicio";
 		}
 		
-		@RequestMapping("/LibreriaSD/buscar/poreditorial")
+		@RequestMapping("/buscar/poreditorial")
 		public String buscarPorEditorial(@RequestParam long idEditorial, Model model) {
                         
                        
@@ -178,7 +178,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "inicio";
 		}
 		
-		@RequestMapping("/LibreriaSD/buscar/porautor")
+		@RequestMapping("/buscar/porautor")
 		public String buscarPorAutor(@RequestParam long idAutor, Model model) {
                       
 
@@ -203,7 +203,7 @@ import org.springframework.beans.factory.annotation.Autowired;
                     return "inicio";
 		}
 		
-		@RequestMapping("/LibreriaSD/buscar/porcategoria")
+		@RequestMapping("/buscar/porcategoria")
 		public String buscarPorCategoria(@RequestParam long idCategoria, Model model) {
 
                         List<Libro> libros = repositorioLibro.findByCategoriaIdCategoria(idCategoria);
@@ -221,7 +221,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "inicio";
 		}
 
-		@RequestMapping("/LibreriaSD/añadir/libro")
+		@RequestMapping("/añadir/libro")
 		public String greetingAñadirLibro(Model model) {
 
 			model.addAttribute("editoriales", repositorioEditorial.findAll());
@@ -233,25 +233,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "añadirLibro";
 		}
 
-		@RequestMapping("/LibreriaSD/añadir/editorial")
+		@RequestMapping("/añadir/editorial")
 		public String greetingAñadirEditorial(Model model) {
 
 			return "añadirEditorial";
 		}
                 
-                @RequestMapping("/LibreriaSD/añadir/autor")
+                @RequestMapping("/añadir/autor")
 		public String greetingAñadirAutor(Model model) {
 
 			return "añadirAutor";
 		}
                 
-                @RequestMapping("/LibreriaSD/añadir/categoria")
+                @RequestMapping("/añadir/categoria")
 		public String greetingAñadirCategoria(Model model) {
 
 			return "añadirCategoria";
 		}
 
-		@RequestMapping("/LibreriaSD/detallesLibro")
+		@RequestMapping("/detallesLibro")
 		public String greetingDetallesLibro(@RequestParam long idLibro, Model model) {
 
 			model.addAttribute("libro", repositorioLibro.findByIdLibro(idLibro));
@@ -259,7 +259,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 			return "detallesLibro";
 		}
 		
-		@RequestMapping("/LibreriaSD/detallesEditorial")
+		@RequestMapping("/detallesEditorial")
 		public String greetingDetallesEditorial(@RequestParam long idEditorial, Model model) {
 
 			model.addAttribute("editorial", repositorioEditorial.findByIdEditorial(idEditorial));

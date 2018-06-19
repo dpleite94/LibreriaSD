@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>LibreriaSD - Inicio</title>
 	<meta charset="utf-8" />
@@ -35,13 +36,13 @@
             <div class="tab-content move-dch">
               <div class="tab-pane active" id="prices2">
                 <br>
-                <p class="lead "> <h3 class= "color-tit" >Busqueda Avanzada</h3></p>
+                <p class="lead "> <h3 th:text="${header.busquedaAv}" class= "color-tit" >Busqueda Avanzada</h3></p>
          
 		 <div class="row">
 		
 			<div class="col-4">
 				<h4 class= "color-tit">Libro</h4>
-				<form method="get" action="/LibreriaSD/buscar/libro">
+				<form method="get" action="/buscar/libro">
 					<h6 class= "color-tit" >Titulo</h6><br />
 					<input type="text" name="titulo" class="form-control" required /><br /> 
 					<input type="submit" value="Buscar" class="btn btn-warning"/>
@@ -50,7 +51,7 @@
 			
 			<div class="col-4">
 				<h4 class= "color-tit" >Editorial</h4>
-				<form method="get" action="/LibreriaSD/buscar/poreditorial">
+				<form method="get" action="/buscar/poreditorial">
 					<h6 class= "color-tit" >Nombre</h6><br />
 					<select class="form-control" name="idEditorial" required>
 						{{#editoriales}}
@@ -114,7 +115,7 @@
 				</h6>
 				<br></br>	
 				<p>
-					<a href="/LibreriaSD/añadir/libro" class="btn btn-warning" role="button">Añadir</a>
+					<a href="/añadir/libro" class="btn btn-warning" role="button">Añadir</a>
 				</p>
 					</div>
                 </div>
@@ -141,7 +142,7 @@
 								<p>
 									Email: <small>{{email}}</small>
 								</p>
-								<a href="/LibreriaSD/detallesEditorial?idEditorial={{idEditorial}}" class="btn btn-warning" role="button">Ver detalles</a>
+								<a href="/detallesEditorial?idEditorial={{idEditorial}}" class="btn btn-warning" role="button">Ver detalles</a>
 							</h6>
 							
 						</div>
@@ -173,7 +174,7 @@
 							<p>
 								Editorial: <small>{{editorial.nombre}}</small>
 							</p>
-							<a href="/LibreriaSD/detallesLibro?idLibro={{idLibro}}" class="btn btn-warning" role="button">Ver detalles</a>
+							<a href="/detallesLibro?idLibro={{idLibro}}" class="btn btn-warning" role="button">Ver detalles</a>
 						</h6>
 						<br />
 					</div>
@@ -184,28 +185,20 @@
 					</div>
 				{{/libros}}
 			</div>
-                    
-					
-					
                 </div>
         </div>
-			  
-			  
-			  
-			  
 			  
         <div class="tab-pane" id="contact2">
                     <br>
                 <p class="lead "> <h3 class= "color-tit" >Busqueda Avanzada</h3></p>
                 <form class="well span8">
         <div class="row">
-                        <div class="span3">
-                            
+                        <div class="span3">                            
 						<br />
 					<div class="row">
-							<div class="col-sm-4">
+							<div class="col-sm-16">
 								<h3 class= "color-tit">Por editorial</h3>
-								<form method="get" action="/LibreriaSD/buscar/poreditorial">
+								<form method="get" action="/buscar/poreditorial">
 									<h6 class= "color-tit" >Nombre</h6><br />
 									<select class="form-control" name="idEditorial" required>
 										{{#editoriales}}
@@ -218,37 +211,6 @@
 									<input type="submit" value="Buscar" class="btn btn-warning"/>
 								</form>
 							</div>
-						    <div class="col-sm-4">
-							<h3 class= "color-tit">Por autor</h3>
-							<form method="get" action="/LibreriaSD/buscar/porautor">
-								<h6 class= "color-tit" >Nombre</h6><br />
-								<select class="form-control" name="autor" required>
-									{{#autores}}
-										<option value="{{autores}}">{{autores}} </option>
-									{{/autores}}
-									{{^autores}}
-										<option disabled>No existe ningún autor</option>
-									{{/autores}}
-								</select> <br />
-								<input type="submit" value="Buscar" class="btn btn-warning"/>
-							</form>
-						</div>
-						<div class="col-sm-4">
-							<h3 class= "color-tit">Por categoría</h3>
-							<form method="get" action="/LibreriaSD/buscar/porcategoria">
-							<h6 class= "color-tit" >Categoría</h6><br />
-								<select class="form-control" name="categoria" required>
-									{{#categorias}}
-										<option value="{{categorias}}">{{categorias}} </option>
-									{{/categorias}}
-									{{^categorias}}
-										<option disabled>No existe ninguna categoría</option>
-									{{/categorias}}
-								</select> <br />
-								<input type="submit" value="Buscar" class="btn btn-warning"/>
-							</form>
-						</div>						
-						
                     </div>
 						
                     </div>

@@ -22,7 +22,7 @@ public class LibroController {
 	@Autowired
 	private CategoriaRepository repositorioCategoria;
 
-	@PostMapping("/LibreriaSD/añadir/libro/solicitud")
+	@PostMapping("/añadir/libro/solicitud")
 	public String añadirLibro(@RequestParam String titulo, Editorial editorial, long[] autores,
 			@RequestParam String añopublicacion, @RequestParam Integer numpag, 
 			@RequestParam String ISBN, @RequestParam Integer precio, Categoria categoria,
@@ -51,7 +51,7 @@ public class LibroController {
 		return "añadirLibro";
 	}
 
-	@RequestMapping("/LibreriaSD/modificarLibro")
+	@RequestMapping("/modificarLibro")
 	public String greetingModificar(@RequestParam long id, Model model) {
 
             
@@ -69,7 +69,7 @@ public class LibroController {
 		return "modificarLibro";
 	}
         
-	@PostMapping("/LibreriaSD/modificarLibro/solicitud")
+	@PostMapping("/modificarLibro/solicitud")
 	public String modificarLibro(@RequestParam long idLibro, long[] autores2,
 			@RequestParam String titulo, @RequestParam long idEditorial, @RequestParam String añopublicacion,
 			@RequestParam Integer numpag, @RequestParam String ISBN, @RequestParam Integer precio,

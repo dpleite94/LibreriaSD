@@ -13,7 +13,7 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaRepository repositorioCategoria;
 
-	@PostMapping("/LibreriaSD/añadir/categoria/solicitud")
+	@PostMapping("/añadir/categoria/solicitud")
 	public String añadirCategoria(@RequestParam String nombre,
 			Model model) {
 

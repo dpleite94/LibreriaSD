@@ -13,7 +13,7 @@ public class EditorialController {
 	@Autowired
 	private EditorialRepository repositorioEditorial;
 
-	@PostMapping("/LibreriaSD/añadir/editorial/solicitud")
+	@PostMapping("/añadir/editorial/solicitud")
 	public String añadirEditorial(@RequestParam String nombre, @RequestParam Integer telefono, 
 			@RequestParam String email, @RequestParam Integer codpostal, @RequestParam String codfiscal,
 			Model model) {
@@ -25,7 +25,7 @@ public class EditorialController {
 		return "añadirEditorial";
 	}
 
-	@RequestMapping("/LibreriaSD/modificarEditorial")
+	@RequestMapping("/modificarEditorial")
 	public String greetingModificar(@RequestParam long id, Model model) {
 
 		model.addAttribute("editorial", repositorioEditorial.findByIdEditorial(id));
@@ -33,7 +33,7 @@ public class EditorialController {
 		return "modificarEditorial";
 	}
 
-	@PostMapping("/LibreriaSD/modificarEditorial/solicitud")
+	@PostMapping("/modificarEditorial/solicitud")
 	public String modificarEditorial(@RequestParam long idEditorial, @RequestParam String nombre, 
 			@RequestParam Integer telefono, @RequestParam String email, @RequestParam Integer codpostal, 
 			@RequestParam String codfiscal, Model model) {
